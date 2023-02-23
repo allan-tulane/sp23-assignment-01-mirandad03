@@ -2,7 +2,6 @@
 CMPS 2200  Assignment 1.
 See assignment-01.pdf for details.
 """
-# no imports needed.
 
 def foo(x):
   if x <= 1:
@@ -11,9 +10,12 @@ def foo(x):
     return (foo(x-1)) + (foo(x-2))
 
 def longest_run(mylist, key):
-    ### TODO
-    pass
-
+  count = 0
+  max_val = 0
+  for i in mylist:
+    count = count +1 if i == key else 0
+    max_val = max(count, max_val)
+  return max_val
 
 class Result:
     """ done """
@@ -27,10 +29,10 @@ class Result:
         return('longest_size=%d left_size=%d right_size=%d is_entire_range=%s' %
               (self.longest_size, self.left_size, self.right_size, self.is_entire_range))
     
-    
 def longest_run_recursive(mylist, key):
-    ### TODO
-    pass
+  if len(mylist) == 1:
+    return 0
+  return (mylist[0] == key) + longest_run_recursive(mylist[1:], key)
 
 ## Feel free to add your own tests here.
 def test_longest_run():
